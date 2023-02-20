@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void    ft_reverse_rotate_list(t_list **list)
+void    ft_reverse_rotate_list(t_list **list, char ab)
 {
     t_list *tail;
     t_list *node;
@@ -31,11 +31,14 @@ void    ft_reverse_rotate_list(t_list **list)
     }
     node->next = NULL;
     *list = tail;
-
+    if(ab == 'a')
+        ft_printf("rra\n");
+    if(ab == 'b')
+        ft_printf("rrb\n");
 }
 
 void    ft_reverse_rotate_two_list(t_list **stack_a, t_list **stack_b)
 {
-    ft_reverse_rotate_list(stack_a);
-    ft_reverse_rotate_list(stack_b);
+    ft_reverse_rotate_list(stack_a, 'a');
+    ft_reverse_rotate_list(stack_b, 'b');
 }
