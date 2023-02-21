@@ -10,7 +10,7 @@ OBJECTS=$(FILES:.c=.o)
 
 all:    $(NAME)
 $(NAME):    $(OBJECTS)
-			@make clean -C $(PRINTF)
+			@make -C $(PRINTF)
 			$(GCC) $(CFLAGS) $(OBJECTS) $(LIBRARY) -o $(NAME)
 clean:
 			@$(RM) $(OBJECTS)

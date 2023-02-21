@@ -31,11 +31,11 @@ int main(int argc, char **argv)
     if(lst_size <= 3)
         ft_sort_three(&stack_a);
     if(lst_size == 5)
-        ft_sort_five(&stack_a, &stack_b, lst_size);
-    while (stack_a != NULL)
-    {
-        printf("%d\n", *stack_a->content);
-        stack_a = stack_a->next;
-    }
+        ft_sort_five(&stack_a, &stack_b);
+    // while (stack_a != NULL)
+    // {
+    //     printf("%d\n", *stack_a->content);
+    //     stack_a = stack_a->next;
+    // }
 }
 

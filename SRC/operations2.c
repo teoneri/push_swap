@@ -42,3 +42,35 @@ void    ft_reverse_rotate_two_list(t_list **stack_a, t_list **stack_b)
     ft_reverse_rotate_list(stack_a, 'a');
     ft_reverse_rotate_list(stack_b, 'b');
 }
+
+int ft_getmax(t_list **stack)
+{
+    int max;
+    t_list *current;
+
+    current = *stack;
+    max = *(*stack)->content;
+    while(current->next != NULL)
+    {
+        if(max < *current->next->content)
+            max = *current->next->content;
+        current = current->next;
+    }
+    return (max);
+}
+
+int ft_getmin(t_list **stack)
+{
+    int min;
+    t_list *current;
+
+    current = *stack;
+    min = *(*stack)->content;
+    while(current->next != NULL)
+    {
+        if(min > *current->next->content)
+            min = *current->next->content;
+        current = current->next;
+    }
+    return (min);
+}

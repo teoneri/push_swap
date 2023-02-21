@@ -32,6 +32,7 @@ void    ft_reverse_rotate_list(t_list **list, char ab);
 void    ft_reverse_rotate_two_list(t_list **stack_a, t_list **stack_b);
 int    ft_check_ifsorted(t_list **stack);
 void   ft_sort_three(t_list **stack_a);
-void ft_sort_five(t_list **stack_a, t_list **stack_b, int size);
-
+void ft_sort_five(t_list **stack_a, t_list **stack_b);
+int ft_getmax(t_list **stack);
+int ft_getmin(t_list **stack);
 #endif
