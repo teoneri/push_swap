@@ -14,26 +14,21 @@
 
 void    ft_reverse_rotate_list(t_list **list, char ab)
 {
+    t_list *head;
     t_list *tail;
     t_list *node;
-    int i;
-    int size;
 
-    size = ft_lstsize(*list);
-    i = 0;
-    node = *list;
-    tail = ft_lstlast(*list);
-    tail->next = node;
-    while(i <= size)
-    {
+    head = *list;
+    node = head;
+    while (node->next->next != NULL)
         node = node->next;
-        i++;
-    }
+    tail = node->next;
     node->next = NULL;
+    tail->next = head;
     *list = tail;
-    if(ab == 'a')
+    if (ab == 'a')
         ft_printf("rra\n");
-    if(ab == 'b')
+    else if (ab == 'b')
         ft_printf("rrb\n");
 }
 

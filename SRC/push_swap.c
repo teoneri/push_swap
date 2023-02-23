@@ -28,9 +28,10 @@ int main(int argc, char **argv)
         ft_printf("stack is sorted");
         exit(0);
     }
+    ft_min_to_top(&stack_a, ft_lstsize(stack_a));
     if(lst_size <= 3)
         ft_sort_three(&stack_a);
-    if(lst_size == 5)
+    else if(lst_size <= 5)
         ft_sort_five(&stack_a, &stack_b);
     // while (stack_a != NULL)
     // {

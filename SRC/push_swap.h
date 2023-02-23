@@ -35,4 +35,5 @@ void   ft_sort_three(t_list **stack_a);
 void ft_sort_five(t_list **stack_a, t_list **stack_b);
 int ft_getmax(t_list **stack);
 int ft_getmin(t_list **stack);
+void    ft_min_to_top(t_list **stack_a, int size);
 #endif
