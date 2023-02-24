@@ -82,65 +82,69 @@ int    *ft_stack_to_array(t_list **stack_a, int size)
     int i;
     t_list *current;
 
+    current = *stack_a;
     i = 0;
     stack = malloc(sizeof(int) * size);
     while(current != NULL)
     {
-        stack[i++] = current->content;
+        stack[i++] = *current->content;
         current = current->next;
     }
     return(stack);
 }
 
-void    ft_min_to_top(t_list **stack_a, int size)
+void    ft_min_to_top(t_list **stack_a, int size, int min)
 {
     t_list *current;
-    t_list *head;
     int half;
     int count;
-    int min;
+    int i;
 
+    i = 1;
     count = 1;
     half = size / 2;
-    head = *stack_a;
     current = *stack_a;
-    min = ft_getmin(stack_a);
     while(*current ->content != min)
     {
-        current->next;
+        current = current->next;
         count++;
     }    
-    if(count < half)
+    if(count <= half)
     {
-        while(current != head)
+        while(i++ < count)
             ft_rotate_list(stack_a, 'a');
     }
-    if(count > half)
+    else if(count >= half)
     {
-        while(current != head)
+        i = size - count;
+        while(i-- >= 0)
             ft_reverse_rotate_list(stack_a, 'a');
     }
 }
 
-// int    ft_lis(t_list **stack, int size)
-// {
-//     int *lis;
-//     int *stack;
-//     int i = 1;
-//     int j = 0;
+void    ft_lis_to_b(t_list **stack_a, t_list **stack_b)
+{
+    t_list *current;
+    int *lis;
+    int size;
+    int i;
 
-
-//     stack = ft_stack_to_array(stack, size);
-//     lis = malloc(sizeof(int) * size);
-//     while(i < size)
-//     {
-//         lis[i] = 1;
-//         while(j < i)
-//         {
-//             if(stack[i] > stack[j] && lis[i] < lis[j] + 1)
-//                 lis[i] = lis[j] + 1;
-//             j++;
-//         }
-//         i++;
-//     }
-// }
+    lis = ft_get_sort_lis(stack_a, ft_lstsize(*stack_a));
+    i = 1;
+    size = lis[0];
+    current = *stack_a;
+    while(i <= size)
+    {
+        if(lis[i] == *current->content)
+        {
+            ft_rotate_list(stack_a, 'a');
+            current = *stack_a;
+            i++;
+        }
+        else
+        {
+            ft_push_list(stack_b, stack_a, 'b');
+            current = *stack_a;
+        }
+    } 
+}

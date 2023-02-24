@@ -17,7 +17,6 @@ int main(int argc, char **argv)
     t_list *stack_a;
     t_list *stack_b;
     unsigned int lst_size;
-
     
     ft_check_isint(argv, argc);
     stack_a = ft_read_argv(argv, argc - 1);
@@ -28,15 +27,23 @@ int main(int argc, char **argv)
         ft_printf("stack is sorted");
         exit(0);
     }
-    ft_min_to_top(&stack_a, ft_lstsize(stack_a));
+    // ft_min_to_top(&stack_a, lst_size, ft_getmin(&stack_a));
+    ft_lis_to_b(&stack_a, &stack_b);
+
     if(lst_size <= 3)
         ft_sort_three(&stack_a);
     else if(lst_size <= 5)
         ft_sort_five(&stack_a, &stack_b);
-    // while (stack_a != NULL)
-    // {
-    //     printf("%d\n", *stack_a->content);
-    //     stack_a = stack_a->next;
-    // }
+    while (stack_a != NULL)
+    {
+        printf("%d\n", *stack_a->content);
+        stack_a = stack_a->next;
+    }
+    ft_printf("\n\n\n\n");
+    while (stack_b != NULL)
+    {
+        printf("%d\n", *stack_b->content);
+        stack_b = stack_b->next;
+    }
 }
 

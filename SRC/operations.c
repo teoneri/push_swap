@@ -28,8 +28,9 @@ void ft_swap_list(t_list **stack, char ab)
 
 void    ft_swap_two_list(t_list **stack_a, t_list **stack_b)
 {
-    ft_swap_list(stack_a, 'a');
-    ft_swap_list(stack_b, 'b');
+    ft_swap_list(stack_a, 't');
+    ft_swap_list(stack_b, 't');
+    ft_printf("ss");
 }
 
 void    ft_push_list(t_list **new_list, t_list **push_list, char ab)
@@ -66,8 +67,7 @@ void    ft_rotate_list(t_list **list, char ab)
 
 void    ft_rotate_two_list(t_list **stack_a, t_list **stack_b)
 {
-    if(*stack_a == NULL || *stack_b == NULL)
-        return;
-    ft_rotate_list(stack_a, 'a');
-    ft_rotate_list(stack_b, 'b');
+    ft_rotate_list(stack_a, 't');
+    ft_rotate_list(stack_b, 't');
+    ft_printf("rr");
 }

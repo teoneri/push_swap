@@ -34,8 +34,9 @@ void    ft_reverse_rotate_list(t_list **list, char ab)
 
 void    ft_reverse_rotate_two_list(t_list **stack_a, t_list **stack_b)
 {
-    ft_reverse_rotate_list(stack_a, 'a');
-    ft_reverse_rotate_list(stack_b, 'b');
+    ft_reverse_rotate_list(stack_a, 't');
+    ft_reverse_rotate_list(stack_b, 't');
+    ft_printf("rrr");
 }
 
 int ft_getmax(t_list **stack)
