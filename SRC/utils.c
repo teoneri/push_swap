@@ -73,3 +73,47 @@ int    *ft_stack_to_array(t_list **stack_a, int size)
     }
     return(stack);
 }
+
+int ft_get_num_moves_b(t_list **stack, int b_content)
+{
+    int count;
+    int size;
+    t_list *current;
+
+    size = ft_lstsize(*stack) / 2;
+    count = 0;
+    current = *stack;
+    while(*current->content != b_content)
+    {
+        current = current->next;
+        count++;
+    }
+    if(count > size)
+        count = (ft_lstsize(*stack) - count) * -1;
+    return(count);
+}
+
+int ft_get_num_moves_a(t_list **stack, int b_content, int size_a)
+{
+    int count;
+    t_list *current;
+
+    count = 0;
+    current = *stack;
+    if(b_content > ft_getmax(stack))
+    {
+        count = ft_get_num_move_formax(stack, size_a);
+        return(count);
+    }
+    while(current != NULL)
+    {
+        if(*current->content > b_content)
+            break;
+        current = current->next;
+        count++;
+    }
+    if(count > size_a / 2)
+        count = (size_a - count) * -1;
+    return(count);
+}
+

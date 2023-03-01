@@ -28,8 +28,7 @@ int main(int argc, char **argv)
         exit(0);
     }
     // ft_min_to_top(&stack_a, lst_size, ft_getmin(&stack_a));
-    ft_lis_to_b(&stack_a, &stack_b);
-
+    ft_sort_big(&stack_a, &stack_b);
     // if(lst_size <= 3)
     //     ft_sort_three(&stack_a);
     // else if(lst_size <= 5)

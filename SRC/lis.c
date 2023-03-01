@@ -67,12 +67,12 @@ int *ft_get_sort_lis(t_list **stack_a, int size)
         }
         i--;
     }
-    free(lis);
-    free(stack);
     for(int j = 0; j < ft_getmax_arr(lis, size); j++)
     {
         ft_printf("LIS %d LIS\n", arr[j]);
     }
+    free(lis);
+    free(stack);
     return (arr);
 }
 

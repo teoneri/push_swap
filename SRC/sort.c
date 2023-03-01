@@ -77,4 +77,34 @@ void ft_sort_five(t_list **stack_a, t_list **stack_b)
 }
 
 
+void    ft_sort_big(t_list **stack_a, t_list **stack_b)
+{
+    t_move *mov;
+    int *tmp; 
+    int i;
 
+    i = 0;
+    mov = ft_mov_a_b(stack_a, stack_b);
+    tmp = malloc(sizeof(int) * ft_lstsize(*stack_b));
+    while(i < ft_lstsize(*stack_b))
+    {
+        if(mov->a[i] >= 0 && mov->b[i] >= 0)
+            tmp[i] = ft_max_nbr(mov->a[i], mov->b[i]);
+        else if(mov->a[i] < 0 && mov->b[i] > 0)
+            tmp[i] = (mov->a[i] * -1) + mov->b[i];
+        else if (mov->a[i] < 0 && mov->b[i] < 0)
+            tmp[i] = ft_max_nbr(mov->a[i], mov->b[i]);
+        else if (mov->a[i] > 0 && mov->b[i] < 0)
+            tmp[i] = mov->a[i] + mov->b[i] * -1;
+        i++;
+    }
+    i = 0;
+    while(i != ft_getmin_arr(tmp, ft_lstsize(*stack_b)))
+        i++;
+    
+}
+
+void    ft_sort_b_to_a(t_list **stack_a, t_list **stack_b)
+{
+    while()
+}
