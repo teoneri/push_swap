@@ -100,14 +100,3 @@ void    ft_check_isint(char **argv, int size)
         i++;
     }
 }
-
-// void    ft_check_intsize(char **argv, int size)
-// {
-//     int i;
-//     long int *buff;
-
-//     i = 0;
-//     buff = ft_atoi_argv(argv, size);
-
-//     free(buff);
-// }

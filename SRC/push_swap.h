@@ -40,5 +40,5 @@ int    *ft_lis(t_list **stack, int size);
 int    *ft_stack_to_array(t_list **stack_a, int size);
 int *ft_get_sort_lis(t_list **stack_a, int size);
 void    ft_lis_to_b(t_list **stack_a, t_list **stack_b);
-int ft_getmax_arr(int *arr);
+int ft_getmax_arr(int *arr, int size);
 #endif

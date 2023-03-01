@@ -70,3 +70,4 @@ int ft_getmin(t_list **stack)
     }
     return (min);
 }
+
