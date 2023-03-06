@@ -77,15 +77,11 @@ void ft_sort_five(t_list **stack_a, t_list **stack_b)
 }
 
 
-void    ft_sort_big(t_list **stack_a, t_list **stack_b)
+int *ft_get_tot_mov(t_move *mov, int *tmp, t_list **stack_b)
 {
-    t_move *mov;
-    int *tmp; 
     int i;
 
     i = 0;
-    mov = ft_mov_a_b(stack_a, stack_b);
-    tmp = malloc(sizeof(int) * ft_lstsize(*stack_b));
     while(i < ft_lstsize(*stack_b))
     {
         if(mov->a[i] >= 0 && mov->b[i] >= 0)
@@ -98,13 +94,74 @@ void    ft_sort_big(t_list **stack_a, t_list **stack_b)
             tmp[i] = mov->a[i] + mov->b[i] * -1;
         i++;
     }
-    i = 0;
-    while(i != ft_getmin_arr(tmp, ft_lstsize(*stack_b)))
-        i++;
-    
+    return (tmp);
 }
 
-void    ft_sort_b_to_a(t_list **stack_a, t_list **stack_b)
+void    ft_sort_big(t_list **stack_a, t_list **stack_b)
 {
-    while()
+    t_move *mov;
+    int *tmp; 
+    int i;
+
+    ft_lis_to_b(stack_a, stack_b);
+    mov = ft_mov_a_b(stack_a, stack_b);
+    tmp = malloc(sizeof(int) * ft_lstsize(*stack_b));
+    i = 0;
+    tmp = ft_get_tot_mov(mov, tmp, stack_b);
+    while(i != ft_getmin_arr(tmp, ft_lstsize(*stack_b)))
+        i++;
+    ft_sort_b_to_a(stack_a, stack_b, mov, i, tmp);
+}
+
+void    ft_sort_b_to_a(t_list **stack_a, t_list **stack_b, t_move *mov, int i, int *tmp)
+{
+    int j = 0;
+    while((*stack_b) != NULL)
+    {
+        j = 0;
+        while( (mov->a[i] != 0 || mov->b[i] != 0))
+        {
+            if(mov->a[i] > 0 && mov->b[i] > 0)
+            {
+                ft_rotate_two_list(stack_a, stack_b);
+                mov->a[i]--;
+                mov->b[i]--;
+            }
+            else if(mov->a[i] < 0 && mov->b[i] < 0)
+            {
+                ft_reverse_rotate_two_list(stack_a, stack_b);
+                mov->a[i]++;
+                mov->b[i]++;
+            }
+            if(mov->b[i] > 0)
+            {
+                ft_rotate_list(stack_b, 'b');
+                mov->b[i]--;
+            }
+            else if(mov->b[i] < 0)
+            {
+                ft_reverse_rotate_list(stack_b, 'b');
+                mov->b[i]++;
+            }
+            else if(mov->a[i] > 0)
+            {
+                ft_rotate_list(stack_a, 'a');
+                mov->a[i]--;
+            }
+            else if(mov->a[i] < 0)
+            {
+                ft_reverse_rotate_list(stack_a, 'a');
+                mov->a[i]++;
+            }
+        }
+        
+        if(*(*stack_a)->content > ft_getmax(stack_a) && *(*stack_a)->content == ft_getmax(stack_b))
+            ft_rotate_list(stack_a, 'a');
+        ft_push_list(stack_a, stack_b, 'a');
+        mov = ft_mov_a_b(stack_a, stack_b);
+        tmp = ft_get_tot_mov(mov, tmp, stack_b);
+        i = 0;
+        while(i != ft_getmin_arr(tmp, ft_lstsize(*stack_b)))
+            i++;
+    }
 }

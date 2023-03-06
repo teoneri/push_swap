@@ -83,6 +83,7 @@ int ft_get_num_moves_b(t_list **stack, int b_content)
     size = ft_lstsize(*stack) / 2;
     count = 0;
     current = *stack;
+
     while(*current->content != b_content)
     {
         current = current->next;
@@ -93,17 +94,16 @@ int ft_get_num_moves_b(t_list **stack, int b_content)
     return(count);
 }
 
-int ft_get_num_moves_a(t_list **stack, int b_content, int size_a)
+int ft_get_num_moves_a(t_list **stack_a, t_list **stack_b, int b_content, int size_a)
 {
     int count;
     t_list *current;
-
     count = 0;
-    current = *stack;
-    if(b_content > ft_getmax(stack))
+    current = *stack_a;
+    if(b_content > ft_getmax(stack_a) && b_content == ft_getmax(stack_b))
     {
-        count = ft_get_num_move_formax(stack, size_a);
-        return(count);
+        count = ft_get_num_move_formax(stack_a, size_a);
+        return(count + 1);
     }
     while(current != NULL)
     {

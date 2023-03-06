@@ -19,7 +19,6 @@ t_move    *ft_mov_a_b(t_list **stack_a, t_list **stack_b)
     t_list *curr;
 
     i = 0;
-    ft_lis_to_b(stack_a, stack_b);
     curr = *stack_b;
     move = malloc(sizeof(move));
     move->a = malloc(sizeof(int) * ft_lstsize(*stack_b));
@@ -27,7 +26,7 @@ t_move    *ft_mov_a_b(t_list **stack_a, t_list **stack_b)
     while(curr != NULL)
     {
         move->b[i] = ft_get_num_moves_b(stack_b, *curr->content);
-        move->a[i] = ft_get_num_moves_a(stack_a, *curr->content, ft_lstsize(*stack_a));
+        move->a[i] = ft_get_num_moves_a(stack_a, stack_b, *curr->content, ft_lstsize(*stack_a));
         curr = curr->next;
         i++;
     }
@@ -45,6 +44,7 @@ int ft_get_num_move_formax(t_list **stack_a, int size_a)
     t_list *current;
     int max_a;
 
+    size_a = 0;
     current = *stack_a;
     count = 0;
     max_a = ft_getmax(stack_a);
@@ -53,8 +53,6 @@ int ft_get_num_move_formax(t_list **stack_a, int size_a)
         current = current->next;
         count++;
     }
-    if(count > size_a / 2)
-        count = (size_a - count) * -1;
     return(count);
 }
 

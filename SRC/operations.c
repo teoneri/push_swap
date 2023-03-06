@@ -69,5 +69,5 @@ void    ft_rotate_two_list(t_list **stack_a, t_list **stack_b)
 {
     ft_rotate_list(stack_a, 't');
     ft_rotate_list(stack_b, 't');
-    ft_printf("rr");
+    ft_printf("rr\n");
 }
