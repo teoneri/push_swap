@@ -16,7 +16,7 @@
 
 #include "../ft_printf/ft_printf.h"
 #include <stdbool.h>
-
+#include <limits.h>
 
 typedef struct s_move
 {
@@ -48,7 +48,7 @@ int *ft_get_sort_lis(t_list **stack_a, int size);
 void    ft_lis_to_b(t_list **stack_a, t_list **stack_b);
 int ft_getmax_arr(int *arr, int size);
 t_move    *ft_mov_a_b(t_list **stack_a, t_list **stack_b);
-int ft_get_num_moves_a(t_list **stack_a, t_list **stack_b, int b_content, int size_a);
+int ft_get_num_moves_a(t_list **stack_a, int b_content, int size_a);
 int ft_get_num_moves_b(t_list **stack, int b_content);
 bool    ft_ismax_stacks(t_list **stack_a, int max_b, t_list *curr);
 int ft_get_num_move_formax(t_list **stack_a, int size_a);
@@ -56,4 +56,5 @@ void    ft_sort_big(t_list **stack_a, t_list **stack_b);
 int ft_getmin_arr(int *arr, int size);
 int	ft_max_nbr(int a, int b);
 void    ft_sort_b_to_a(t_list **stack_a, t_list **stack_b, t_move *mov, int i, int *tmp);
+void ft_finish_sort(t_list **stack_a);
 #endif

@@ -77,12 +77,14 @@ void ft_sort_five(t_list **stack_a, t_list **stack_b)
 }
 
 
-int *ft_get_tot_mov(t_move *mov, int *tmp, t_list **stack_b)
+int *ft_get_tot_mov(t_move *mov, int size_b)
 {
     int i;
+    int *tmp;
 
     i = 0;
-    while(i < ft_lstsize(*stack_b))
+    tmp = malloc(sizeof(int) * size_b);
+    while(i < size_b)
     {
         if(mov->a[i] >= 0 && mov->b[i] >= 0)
             tmp[i] = ft_max_nbr(mov->a[i], mov->b[i]);
@@ -94,6 +96,10 @@ int *ft_get_tot_mov(t_move *mov, int *tmp, t_list **stack_b)
             tmp[i] = mov->a[i] + mov->b[i] * -1;
         i++;
     }
+    // for(i = 0; i < size_b; i++)
+    // {
+    //     ft_printf("TMP %d TMP\n", tmp[i]);
+    // }
     return (tmp);
 }
 
@@ -105,9 +111,9 @@ void    ft_sort_big(t_list **stack_a, t_list **stack_b)
 
     ft_lis_to_b(stack_a, stack_b);
     mov = ft_mov_a_b(stack_a, stack_b);
-    tmp = malloc(sizeof(int) * ft_lstsize(*stack_b));
+    
     i = 0;
-    tmp = ft_get_tot_mov(mov, tmp, stack_b);
+    tmp = ft_get_tot_mov(mov,ft_lstsize(*stack_b));
     while(i != ft_getmin_arr(tmp, ft_lstsize(*stack_b)))
         i++;
     ft_sort_b_to_a(stack_a, stack_b, mov, i, tmp);
@@ -115,10 +121,12 @@ void    ft_sort_big(t_list **stack_a, t_list **stack_b)
 
 void    ft_sort_b_to_a(t_list **stack_a, t_list **stack_b, t_move *mov, int i, int *tmp)
 {
-    int j = 0;
+    int size_b;
+
+    size_b = ft_lstsize(*stack_b) ;
+
     while((*stack_b) != NULL)
     {
-        j = 0;
         while( (mov->a[i] != 0 || mov->b[i] != 0))
         {
             if(mov->a[i] > 0 && mov->b[i] > 0)
@@ -133,7 +141,7 @@ void    ft_sort_b_to_a(t_list **stack_a, t_list **stack_b, t_move *mov, int i, i
                 mov->a[i]++;
                 mov->b[i]++;
             }
-            if(mov->b[i] > 0)
+            else if(mov->b[i] > 0)
             {
                 ft_rotate_list(stack_b, 'b');
                 mov->b[i]--;
@@ -154,14 +162,18 @@ void    ft_sort_b_to_a(t_list **stack_a, t_list **stack_b, t_move *mov, int i, i
                 mov->a[i]++;
             }
         }
-        
-        if(*(*stack_a)->content > ft_getmax(stack_a) && *(*stack_a)->content == ft_getmax(stack_b))
-            ft_rotate_list(stack_a, 'a');
         ft_push_list(stack_a, stack_b, 'a');
+        size_b--;
+        if(*(*stack_a)->content == ft_getmax(stack_a))
+            ft_rotate_list(stack_a, 'a');
         mov = ft_mov_a_b(stack_a, stack_b);
-        tmp = ft_get_tot_mov(mov, tmp, stack_b);
+        free(tmp);
+        tmp = ft_get_tot_mov(mov, size_b);
         i = 0;
-        while(i != ft_getmin_arr(tmp, ft_lstsize(*stack_b)))
+        while(tmp[i] != ft_getmin_arr(tmp, size_b))
+        {
             i++;
+        } 
     }
+    ft_finish_sort(stack_a);
 }

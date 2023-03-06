@@ -33,16 +33,16 @@ int main(int argc, char **argv)
     //     ft_sort_three(&stack_a);
     // else if(lst_size <= 5)
     //     ft_sort_five(&stack_a, &stack_b);
-    while (stack_a != NULL)
-    {
-        printf("%d\n", *stack_a->content);
-        stack_a = stack_a->next;
-    }
-    ft_printf("\n\n\n\n");
-    while (stack_b != NULL)
-    {
-        printf("%d\n", *stack_b->content);
-        stack_b = stack_b->next;
-    }
+    // while (stack_a != NULL)
+    // {
+    //     printf("%d\n", *stack_a->content);
+    //     stack_a = stack_a->next;
+    // }
+    // ft_printf("\n\n\n\n");
+    // while (stack_b != NULL)
+    // {
+    //     printf("%d\n", *stack_b->content);
+    //     stack_b = stack_b->next;
+    // }
 }
 

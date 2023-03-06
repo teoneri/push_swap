@@ -35,10 +35,10 @@ int    *ft_lis(t_list **list, int size)
         i++;
     }
     free(stack);
-    for(i = 0; i < size; i++)
-    {
-        ft_printf("LLL %d LLL\n", lis[i]);
-    }
+    // for(i = 0; i < size; i++)
+    // {
+    //     ft_printf("LLL %d LLL\n", lis[i]);
+    // }
     return (lis);
 }
 
@@ -67,10 +67,10 @@ int *ft_get_sort_lis(t_list **stack_a, int size)
         }
         i--;
     }
-    for(int j = 0; j < ft_getmax_arr(lis, size); j++)
-    {
-        ft_printf("LIS %d LIS\n", arr[j]);
-    }
+    // for(int j = 0; j < ft_getmax_arr(lis, size); j++)
+    // {
+    //     ft_printf("LIS %d LIS\n", arr[j]);
+    // }
     free(lis);
     free(stack);
     return (arr);

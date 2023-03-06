@@ -94,26 +94,29 @@ int ft_get_num_moves_b(t_list **stack, int b_content)
     return(count);
 }
 
-int ft_get_num_moves_a(t_list **stack_a, t_list **stack_b, int b_content, int size_a)
-{
-    int count;
-    t_list *current;
-    count = 0;
-    current = *stack_a;
-    if(b_content > ft_getmax(stack_a) && b_content == ft_getmax(stack_b))
-    {
-        count = ft_get_num_move_formax(stack_a, size_a);
-        return(count + 1);
-    }
-    while(current != NULL)
-    {
-        if(*current->content > b_content)
-            break;
-        current = current->next;
-        count++;
-    }
-    if(count > size_a / 2)
-        count = (size_a - count) * -1;
-    return(count);
-}
 
+int ft_get_num_moves_a(t_list **stack_a, int b_content, int size_a)
+{
+    t_list *current = *stack_a;
+    int closest_bigger_num = INT_MAX;
+    int closest_bigger_num_index = -1;
+    int i = 0;
+    
+    while (current)
+    {
+        int curr_num = *(int *)current->content;
+        if (curr_num > b_content && curr_num < closest_bigger_num)
+        {
+            closest_bigger_num = curr_num;
+            closest_bigger_num_index = i;
+        }
+        current = current->next;
+        i++;
+    }
+    if (closest_bigger_num_index == -1)
+        return ft_get_num_move_formax(stack_a, size_a); 
+    if (closest_bigger_num_index > size_a / 2)
+        return (closest_bigger_num_index - size_a); 
+    else
+        return closest_bigger_num_index; 
+}

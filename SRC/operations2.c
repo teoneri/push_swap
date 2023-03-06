@@ -36,7 +36,7 @@ void    ft_reverse_rotate_two_list(t_list **stack_a, t_list **stack_b)
 {
     ft_reverse_rotate_list(stack_a, 't');
     ft_reverse_rotate_list(stack_b, 't');
-    ft_printf("rrr");
+    ft_printf("rrr\n");
 }
 
 int ft_getmax(t_list **stack)
