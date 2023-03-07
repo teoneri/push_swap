@@ -1,34 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mneri <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 12:23:45 by mneri             #+#    #+#             */
-/*   Updated: 2023/01/24 12:23:46 by mneri            ###   ########.fr       */
+/*   Created: 2023/03/07 15:27:51 by mneri             #+#    #+#             */
+/*   Updated: 2023/03/07 15:27:53 by mneri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+
+void	ft_check_moves(char *arr)
+{
+	int i;
+
+	i = 0;
+	while(arr[i] != '\0')
+	{
+		
+	}
+}
+
+
 int	main(int argc, char **argv)
 {
-	t_list			*stack_a;
-	t_list			*stack_b;
-	unsigned int	lst_size;
+	t_list *stack_a;
+	// t_list *stack_b;
+	char *arr;
 
-	ft_check_args(argc, argv, &stack_a);
-	lst_size = ft_lstsize(stack_a);
-	if (ft_check_ifsorted(&stack_a) == 0)
-	{
-		ft_printf("stack is sorted");
+	if(argc < 2)
 		exit(0);
-	}
-	if (lst_size <= 3)
-		ft_sort_three(&stack_a);
-	else if (lst_size <= 5)
-		ft_sort_five(&stack_a, &stack_b);
-	else
-		ft_sort_big(&stack_a, &stack_b);
+	ft_check_args(argc, argv, &stack_a);
+	while(1)
+	{
+		arr = get_next_line(0);
+	}	
+	
+
 }
