@@ -106,12 +106,15 @@ void	ft_b_to_a(t_list **stk_a, t_list **stk_b, t_move *mov, int *tmp)
 		size_b--;
 		if (*(*stk_a)->content == ft_getmax(stk_a))
 			ft_rotate_list(stk_a, 'a');
-		mov = ft_mov_a_b(stk_a, stk_b);
+		free(mov->a);
+		free(mov->b);
+		free(mov);
 		free(tmp);
+		mov = ft_mov_a_b(stk_a, stk_b);
 		tmp = ft_get_tot_mov(mov, size_b);
 		i = 0;
 		while (tmp[i] != ft_getmin_arr(tmp, size_b))
 			i++;
 	}
-	ft_finish_sort(stk_a);
+	ft_finish_and_free(stk_a, mov, tmp);
 }

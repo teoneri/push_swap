@@ -78,7 +78,7 @@ int	*ft_get_tot_mov(t_move *mov, int size_b)
 	int	*tmp;
 
 	i = 0;
-	tmp = malloc(sizeof(int) * size_b);
+	tmp = ft_calloc(sizeof(int), size_b + 1);
 	while (i < size_b)
 	{
 		if (mov->a[i] >= 0 && mov->b[i] >= 0)

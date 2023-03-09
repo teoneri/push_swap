@@ -36,7 +36,7 @@ int	*ft_stack_to_array(t_list **stack_a, int size)
 
 	current = *stack_a;
 	i = 0;
-	stack = malloc(sizeof(int) * size);
+	stack = ft_calloc(sizeof(int), size);
 	while (current != NULL)
 	{
 		stack[i++] = *current->content;

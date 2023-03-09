@@ -18,7 +18,7 @@ long int	*ft_atoi_argv(char **argv, int size)
 	int			i;
 
 	i = 0;
-	arr = ft_calloc(sizeof(long int), size);
+	arr = malloc(sizeof(long int) * size);
 	while (i < size)
 	{
 		arr[i] = ft_atoi(argv[i + 1]);
@@ -37,16 +37,14 @@ long int	*ft_atoi_argv(char **argv, int size)
 	return (arr);
 }
 
-t_list	*ft_read_argv(char **argv, int size)
+t_list	*ft_read_argv(int size, long int *buff)
 {
 	int			i;
-	long int	*buff;
 	t_list		*stack;
 	t_list		*current;
 
 	i = 1;
-	buff = ft_atoi_argv(argv, size);
-	stack = ft_lstnew(&buff[0]);
+	stack = ft_lstnew(buff);
 	current = stack;
 	while (i < size)
 	{
@@ -100,9 +98,9 @@ void	ft_check_isint(char **argv, int size)
 	}
 }
 
-void	ft_check_args(int argc, char **argv, t_list **stack_a)
+void	ft_check_args(int ac, char **av, t_list **stk_a, long int *buff)
 {
-	ft_check_isint(argv, argc);
-	*stack_a = ft_read_argv(argv, argc - 1);
-	ft_check_duplicates(*stack_a);
+	ft_check_isint(av, ac);
+	*stk_a = ft_read_argv(ac - 1, buff);
+	ft_check_duplicates(*stk_a);
 }

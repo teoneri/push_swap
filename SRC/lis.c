@@ -47,11 +47,11 @@ int	*ft_get_sort_lis(t_list **stack_a, int size, int *stack)
 	int	j;
 
 	lis = ft_lis(stack_a, size);
-	arr = malloc(sizeof(int) * ft_getmax_arr(lis, size));
+	arr = ft_calloc(sizeof(int), (ft_getmax_arr(lis, size) + 1));
 	count = ft_getmax_arr(lis, size);
-	i = ft_lstsize((*stack_a));
+	i = ft_lstsize((*stack_a)) - 1;
 	j = ft_getmax_arr(lis, size) - 1;
-	while (i >= 0)
+	while (i > 0)
 	{
 		if (lis[i] == count)
 		{
@@ -91,4 +91,5 @@ void	ft_lis_to_b(t_list **stack_a, t_list **stack_b)
 			current = *stack_a;
 		}
 	}
+	free(lis);
 }

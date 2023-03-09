@@ -16,9 +16,12 @@ int	main(int argc, char **argv)
 {
 	t_list			*stack_a;
 	t_list			*stack_b;
+	long int		*buff;
 	unsigned int	lst_size;
 
-	ft_check_args(argc, argv, &stack_a);
+	stack_b = NULL;
+	buff = ft_atoi_argv(argv, argc - 1);
+	ft_check_args(argc, argv, &stack_a, buff);
 	lst_size = ft_lstsize(stack_a);
 	if (ft_check_ifsorted(&stack_a) == 0)
 	{
@@ -31,4 +34,7 @@ int	main(int argc, char **argv)
 		ft_sort_five(&stack_a, &stack_b);
 	else
 		ft_sort_big(&stack_a, &stack_b);
+	ft_freestack(stack_a);
+	ft_freestack(stack_b);
+	free(buff);
 }

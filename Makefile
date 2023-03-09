@@ -1,7 +1,8 @@
 GCC     = gcc
 CFLAGS  = -g -Wall -Wextra -Werror -fPIC -fPIE
-FILES   = SRC/push_swap.c SRC/check_args.c SRC/operations.c SRC/operations2.c SRC/sort.c SRC/lis.c SRC/utils.c SRC/utils2.c SRC/sort_tool.c SRC/move.c
-SRC_BONUS   = SRC/checker.c SRC/check_args.c
+FILES   = SRC/push_swap.c SRC/check_args.c SRC/operations.c SRC/operations2.c SRC/sort.c SRC/lis.c SRC/utils.c SRC/utils2.c SRC/sort_tool.c SRC/move.c \
+			SRC/free.c
+SRC_BONUS   = SRC/checker.c SRC/check_args.c SRC/check_ops.c SRC/check_ops_two.c
 NAME    = push_swap
 BONUS_NAME = checker
 PRINTF  = ft_printf

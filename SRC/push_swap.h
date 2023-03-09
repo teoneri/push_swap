@@ -22,7 +22,7 @@ typedef struct s_move
 	int	*b;
 }	t_move;
 
-t_list		*ft_read_argv(char **argv, int size);
+t_list		*ft_read_argv(int size, long int *buff);
 void		ft_copy_array(int *arr1, int *arr2, int size);
 void		ft_check_duplicates(t_list *stack_a);
 void		ft_check_isint(char **argv, int size);
@@ -58,5 +58,7 @@ void		ft_ra_rb(t_list **stack_a, t_list **stack_b, t_move *mov, int i);
 void		ft_ex_mvm(t_list **stack_a, t_list **stack_b, t_move *mov, int i);
 int			*ft_get_tot_mov(t_move *mov, int size_b);
 void		ft_help_sort_five(t_list **stack_a, t_list **stack_b, int size);
-void		ft_check_args(int argc, char **argv, t_list **stack_a);
+void		ft_check_args(int ac, char **av, t_list **stk_a, long int *buff);
+void		ft_freestack(t_list *stack);
+void		ft_finish_and_free(t_list **stack_a, t_move *mov, int *tmp);
 #endif

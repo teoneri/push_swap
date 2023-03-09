@@ -96,12 +96,14 @@ t_move	*ft_mov_a_b(t_list **stack_a, t_list **stack_b)
 	int		i;
 	t_list	*curr;
 	int		size_a;
+	int		size_b;
 
+	size_b = ft_lstsize(*stack_b);
 	i = 0;
 	curr = *stack_b;
-	move = malloc(sizeof(move));
-	move->a = malloc(sizeof(int) * ft_lstsize(*stack_b));
-	move->b = malloc(sizeof(int) * ft_lstsize(*stack_b));
+	move = ft_calloc(sizeof(t_move), 1);
+	move->a = ft_calloc(sizeof(int), size_b);
+	move->b = ft_calloc(sizeof(int), size_b);
 	while (curr != NULL)
 	{
 		size_a = ft_lstsize(*stack_a);
