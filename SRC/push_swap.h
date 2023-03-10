@@ -24,8 +24,8 @@ typedef struct s_move
 
 t_list		*ft_read_argv(int size, long int *buff);
 void		ft_copy_array(int *arr1, int *arr2, int size);
-void		ft_check_duplicates(t_list *stack_a);
-void		ft_check_isint(char **argv, int size);
+void		ft_check_duplicates(t_list *stack_a, long int *buff);
+void		ft_check_isint(char **argv, int size, long int *buff);
 void		ft_check_intsize(char **argv, int size);
 long int	*ft_atoi_argv(char **argv, int size);
 void		ft_swap_list(t_list **stack, char ab);

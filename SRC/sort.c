@@ -45,6 +45,9 @@ void	ft_sort_three(t_list **stack_a)
 			ft_reverse_rotate_list(stack_a, 'a');
 		else if (nxtcontent > *tail->content)
 			ft_swap_list(stack_a, 'a');
+		nxtcontent = *(*stack_a)->next->content;
+		content = *(*stack_a)->content;
+		tail = ft_lstlast(*stack_a);
 	}
 }
 

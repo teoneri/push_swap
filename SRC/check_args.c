@@ -30,6 +30,7 @@ long int	*ft_atoi_argv(char **argv, int size)
 		if (arr[i] > 2147483647 || arr[i] < -2147483648)
 		{
 			ft_printf("%s", "Error\n");
+			free(arr);
 			exit(0);
 		}
 		i++;
@@ -55,10 +56,12 @@ t_list	*ft_read_argv(int size, long int *buff)
 	return (stack);
 }
 
-void	ft_check_duplicates(t_list *stack_a)
+void	ft_check_duplicates(t_list *stack_a, long int *buff)
 {
 	t_list	*current;
+	t_list	*head;
 
+	head = stack_a;
 	while (stack_a != NULL)
 	{
 		current = stack_a;
@@ -67,6 +70,9 @@ void	ft_check_duplicates(t_list *stack_a)
 			if (*stack_a->content == *current->next->content)
 			{
 				ft_printf("%s", "Error\n");
+				stack_a = head;
+				free(buff);
+				ft_freestack(stack_a);
 				exit(0);
 			}
 			current = current->next;
@@ -75,7 +81,7 @@ void	ft_check_duplicates(t_list *stack_a)
 	}
 }
 
-void	ft_check_isint(char **argv, int size)
+void	ft_check_isint(char **argv, int size, long int *buff)
 {
 	int	i;
 	int	k;
@@ -89,6 +95,7 @@ void	ft_check_isint(char **argv, int size)
 			if (ft_isdigit(argv[i][k]) == 0)
 			{
 				ft_printf("%s", "Error\n");
+				free(buff);
 				exit(0);
 			}
 			k++;
@@ -100,7 +107,7 @@ void	ft_check_isint(char **argv, int size)
 
 void	ft_check_args(int ac, char **av, t_list **stk_a, long int *buff)
 {
-	ft_check_isint(av, ac);
+	ft_check_isint(av, ac, buff);
 	*stk_a = ft_read_argv(ac - 1, buff);
-	ft_check_duplicates(*stk_a);
+	ft_check_duplicates(*stk_a, buff);
 }

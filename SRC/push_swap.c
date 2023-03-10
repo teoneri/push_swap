@@ -24,7 +24,12 @@ int	main(int argc, char **argv)
 	ft_check_args(argc, argv, &stack_a, buff);
 	lst_size = ft_lstsize(stack_a);
 	if (argc < 2 || ft_check_ifsorted(&stack_a) == 0)
+	{
+		ft_freestack(stack_a);
+		ft_freestack(stack_b);
+		free(buff);
 		exit(0);
+	}
 	if (lst_size <= 3)
 		ft_sort_three(&stack_a);
 	else if (lst_size <= 5)

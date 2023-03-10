@@ -15,7 +15,7 @@
 
 # include "push_swap.h"
 
-void	ft_check_moves(char *arr, t_list **stack_a, t_list **stack_b);
+int		ft_check_moves(char *arr, t_list **stack_a, t_list **stack_b);
 void	ft_push_list_ck(t_list **new_list, t_list **push_list);
 void	ft_swap_list_ck(t_list **stack);
 void	ft_rotate_list_ck(t_list **list);

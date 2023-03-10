@@ -12,7 +12,7 @@
 
 #include "checker.h"
 
-void	ft_restof_moves(char *arr, t_list **stack_a, t_list **stack_b)
+int	ft_restof_moves(char *arr, t_list **stack_a, t_list **stack_b)
 {
 	if (!ft_strcmp(arr, "rb\n"))
 		ft_rotate_list_ck(stack_a);
@@ -27,13 +27,16 @@ void	ft_restof_moves(char *arr, t_list **stack_a, t_list **stack_b)
 	else
 	{
 		ft_printf("Error\n");
-		exit(0);
+		return (1);
 	}
-	free(arr);
+	return (0);
 }
 
-void	ft_check_moves(char *arr, t_list **stack_a, t_list **stack_b)
+int	ft_check_moves(char *arr, t_list **stack_a, t_list **stack_b)
 {
+	int	i;
+
+	i = 0;
 	while (arr)
 	{
 		if (!ft_strcmp(arr, "sa\n"))
@@ -49,9 +52,13 @@ void	ft_check_moves(char *arr, t_list **stack_a, t_list **stack_b)
 		else if (!ft_strcmp(arr, "ra\n"))
 			ft_rotate_list_ck(stack_a);
 		else
-			ft_restof_moves(arr, stack_a, stack_b);
+			i = ft_restof_moves(arr, stack_a, stack_b);
+		free(arr);
+		if (i == 1)
+			return (1);
 		arr = get_next_line(0);
 	}
+	return (0);
 }
 
 int	ft_check_ifsorted(t_list **stack)
@@ -92,13 +99,22 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	buff = ft_atoi_argv(argv, argc - 1);
 	if (argc < 2)
+	{
+		free(buff);
 		exit(0);
+	}
 	ft_check_args(argc, argv, &stack_a, buff);
 	arr = get_next_line(0);
-	ft_check_moves(arr, &stack_a, &stack_b);
+	if (ft_check_moves(arr, &stack_a, &stack_b) == 1)
+	{
+		free(buff);
+		ft_freestack(stack_b);
+		ft_freestack(stack_a);
+		exit(0);
+	}
 	if (ft_check_ifsorted(&stack_a) == 0 && stack_b == NULL)
 		ft_printf("OK\n");
-	else
+	else if (ft_check_ifsorted(&stack_a) != 0 || stack_b != NULL)
 		ft_printf("KO\n");
 	free(buff);
 	ft_freestack(stack_b);
