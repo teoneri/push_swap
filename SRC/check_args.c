@@ -29,7 +29,7 @@ long int	*ft_atoi_argv(char **argv, int size)
 	{
 		if (arr[i] > 2147483647 || arr[i] < -2147483648)
 		{
-			ft_printf("%s", "Over or Under MAX/MIN_INT");
+			ft_printf("%s", "Error\n");
 			exit(0);
 		}
 		i++;
@@ -66,7 +66,7 @@ void	ft_check_duplicates(t_list *stack_a)
 		{
 			if (*stack_a->content == *current->next->content)
 			{
-				ft_printf("%s", "Found duplicates");
+				ft_printf("%s", "Error\n");
 				exit(0);
 			}
 			current = current->next;
@@ -88,7 +88,7 @@ void	ft_check_isint(char **argv, int size)
 		{
 			if (ft_isdigit(argv[i][k]) == 0)
 			{
-				ft_printf("%s", "Error\nNon integer");
+				ft_printf("%s", "Error\n");
 				exit(0);
 			}
 			k++;
