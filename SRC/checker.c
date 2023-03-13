@@ -25,10 +25,7 @@ int	ft_restof_moves(char *arr, t_list **stack_a, t_list **stack_b)
 	else if (!ft_strcmp(arr, "rrr\n"))
 		ft_reverse_rotate_two_list_ck(stack_a, stack_b);
 	else
-	{
-		ft_printf("Error\n");
 		return (1);
-	}
 	return (0);
 }
 
@@ -107,16 +104,13 @@ int	main(int argc, char **argv)
 	arr = get_next_line(0);
 	if (ft_check_moves(arr, &stack_a, &stack_b) == 1)
 	{
-		free(buff);
-		ft_freestack(stack_b);
-		ft_freestack(stack_a);
+		ft_printf("Error\n");
+		ft_free_two_stack(&stack_a, &stack_b, buff);
 		exit(0);
 	}
 	if (ft_check_ifsorted(&stack_a) == 0 && stack_b == NULL)
 		ft_printf("OK\n");
 	else if (ft_check_ifsorted(&stack_a) != 0 || stack_b != NULL)
 		ft_printf("KO\n");
-	free(buff);
-	ft_freestack(stack_b);
-	ft_freestack(stack_a);
+	ft_free_two_stack(&stack_a, &stack_b, buff);
 }

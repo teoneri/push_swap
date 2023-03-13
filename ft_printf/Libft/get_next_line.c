@@ -86,6 +86,8 @@ char	*clean_stash(char *stash)
 	j = 0;
 	while (stash[i])
 		s[j++] = stash[i++];
+	if (ft_freenull(j, s, stash) == 0)
+		return (NULL);
 	s[j] = '\0';
 	free(stash);
 	return (s);
@@ -97,7 +99,10 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		free(stash);
 		return (0);
+	}
 	stash = readed_line(fd, stash);
 	if (!stash)
 		return (NULL);

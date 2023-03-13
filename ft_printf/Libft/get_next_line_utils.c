@@ -69,3 +69,14 @@ char	*ft_strjoin(char *s1, char *s2)
 	free(s1);
 	return (str);
 }
+
+int	ft_freenull(int j, char *s, char *s2)
+{
+	if (j == 0)
+	{
+		free(s);
+		free(s2);
+		return (0);
+	}
+	return (1);
+}

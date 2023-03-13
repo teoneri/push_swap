@@ -23,5 +23,5 @@ void	ft_swap_two_list_ck(t_list **stack_a, t_list **stack_b);
 void	ft_rotate_two_list_ck(t_list **stack_a, t_list **stack_b);
 void	ft_reverse_rotate_list_ck(t_list **list);
 void	ft_reverse_rotate_two_list_ck(t_list **stack_a, t_list **stack_b);
-
+void	ft_free_two_stack(t_list **stack_a, t_list **stack_b, long int *b);
 #endif

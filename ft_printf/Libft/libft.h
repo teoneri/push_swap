@@ -74,5 +74,5 @@ char		*readed_line(int fd, char *stash);
 char		*clean_stash(char *stash);
 size_t		ft_strlen_gnl(char *str);
 int			ft_strcmp(const char *s1, const char *s2);
-
+int			ft_freenull(int j, char *s, char *s2);
 #endif

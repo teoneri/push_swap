@@ -10,7 +10,7 @@ MFLAGS = clean
 
 HEAD = ft_printf.h
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 CC = gcc
 
